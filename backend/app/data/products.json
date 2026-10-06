@@ -1,0 +1,137 @@
+[
+  {
+    "id": "P001",
+    "name": "FlexiStep Shock Absorbing Trekking Poles",
+    "category": "hiking",
+    "price": 89,
+    "rating": 4.8,
+    "tags": ["hiking", "joint-friendly", "low-impact", "senior-friendly"],
+    "stock": true
+  },
+  {
+    "id": "P002",
+    "name": "TrailPro Hiking Boots",
+    "category": "hiking",
+    "price": 95,
+    "rating": 4.6,
+    "tags": ["hiking", "durable", "comfortable"],
+    "stock": true
+  },
+  {
+    "id": "P003",
+    "name": "ComfortTrail Lightweight Backpack",
+    "category": "hiking",
+    "price": 75,
+    "rating": 4.5,
+    "tags": ["hiking", "lightweight", "comfortable"],
+    "stock": true
+  },
+  {
+    "id": "P004",
+    "name": "MountainFlex Knee Support Sleeve",
+    "category": "fitness",
+    "price": 35,
+    "rating": 4.7,
+    "tags": ["fitness", "joint-friendly", "supportive"],
+    "stock": true
+  },
+  {
+    "id": "P005",
+    "name": "AdventureLite Walking Shoes",
+    "category": "hiking",
+    "price": 68,
+    "rating": 4.4,
+    "tags": ["hiking", "lightweight", "comfortable"],
+    "stock": true
+  },
+  {
+    "id": "P006",
+    "name": "PeakComfort Hiking Socks",
+    "category": "hiking",
+    "price": 22,
+    "rating": 4.3,
+    "tags": ["hiking", "comfortable", "lightweight"],
+    "stock": true
+  },
+  {
+    "id": "P007",
+    "name": "TitanTrail Trekking Poles",
+    "category": "hiking",
+    "price": 112,
+    "rating": 4.9,
+    "tags": ["hiking", "joint-friendly", "durable"],
+    "stock": true
+  },
+  {
+    "id": "P008",
+    "name": "EasyHike Aluminum Poles",
+    "category": "hiking",
+    "price": 48,
+    "rating": 4.5,
+    "tags": ["hiking", "low-impact", "lightweight"],
+    "stock": true
+  },
+  {
+    "id": "P009",
+    "name": "TrailGuard Rain Jacket",
+    "category": "hiking",
+    "price": 79,
+    "rating": 4.6,
+    "tags": ["hiking", "waterproof", "lightweight"],
+    "stock": true
+  },
+  {
+    "id": "P010",
+    "name": "YogaFlow Premium Mat",
+    "category": "yoga",
+    "price": 55,
+    "rating": 4.7,
+    "tags": ["yoga", "comfortable", "non-slip"],
+    "stock": true
+  },
+  {
+    "id": "P011",
+    "name": "FitCore Resistance Band Set",
+    "category": "fitness",
+    "price": 30,
+    "rating": 4.5,
+    "tags": ["fitness", "lightweight", "portable"],
+    "stock": true
+  },
+  {
+    "id": "P012",
+    "name": "ActiveLife Smart Fitness Watch",
+    "category": "fitness",
+    "price": 99,
+    "rating": 4.6,
+    "tags": ["fitness", "smart", "tracking"],
+    "stock": true
+  },
+  {
+    "id": "P013",
+    "name": "SoftStep Comfort Insoles",
+    "category": "footwear",
+    "price": 28,
+    "rating": 4.4,
+    "tags": ["joint-friendly", "supportive", "comfortable"],
+    "stock": true
+  },
+  {
+    "id": "P014",
+    "name": "TrailVision Polarized Sunglasses",
+    "category": "hiking",
+    "price": 45,
+    "rating": 4.5,
+    "tags": ["hiking", "lightweight", "outdoor"],
+    "stock": true
+  },
+  {
+    "id": "P015",
+    "name": "SummitPro Hiking Jacket",
+    "category": "hiking",
+    "price": 125,
+    "rating": 4.8,
+    "tags": ["hiking", "waterproof", "durable"],
+    "stock": true
+  }
+]
