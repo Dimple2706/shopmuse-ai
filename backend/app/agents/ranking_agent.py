@@ -17,8 +17,8 @@ class RankingAgent:
             "category"
         )
 
-        # Number of meaningful preferences
-        meaningful_preferences = [
+        # These are preferences, not hard requirements.
+        soft_preferences = [
             preference
             for preference in preferences
             if preference not in [
@@ -32,9 +32,9 @@ class RankingAgent:
             score = 0
             reasons = []
 
-            # -------------------------
-            # 1. Category Match
-            # -------------------------
+            # --------------------------------
+            # 1. CATEGORY MATCH - 25 POINTS
+            # --------------------------------
 
             if category == product["category"]:
 
@@ -44,52 +44,52 @@ class RankingAgent:
                     "matches your activity"
                 )
 
-            # -------------------------
-            # 2. Preference Match
-            # -------------------------
+            # --------------------------------
+            # 2. PREFERENCE MATCH - 40 POINTS
+            # --------------------------------
 
-            matched_preferences = 0
+            if soft_preferences:
 
-            for preference in meaningful_preferences:
+                matched_preferences = []
 
-                if preference in product["tags"]:
+                for preference in soft_preferences:
 
-                    matched_preferences += 1
+                    if preference in product["tags"]:
+
+                        matched_preferences.append(
+                            preference
+                        )
+
+                preference_ratio = (
+                    len(matched_preferences)
+                    / len(soft_preferences)
+                )
+
+                score += preference_ratio * 40
+
+                for preference in matched_preferences:
 
                     reasons.append(
                         f"matches your "
                         f"{preference} preference"
                     )
 
-            # Give preference points
-            # based on how many match.
-            if meaningful_preferences:
-
-                preference_score = (
-                    matched_preferences
-                    / len(meaningful_preferences)
-                ) * 45
-
-                score += preference_score
-
-            # -------------------------
-            # 3. Budget Fit
-            # -------------------------
+            # --------------------------------
+            # 3. BUDGET FIT - 20 POINTS
+            # --------------------------------
 
             if budget:
 
                 if product["price"] <= budget:
 
-                    # Higher score when price is
-                    # comfortably within budget.
+                    # Products comfortably below budget
+                    # receive a slightly better score.
                     budget_ratio = (
-                        product["price"]
-                        / budget
+                        product["price"] / budget
                     )
 
                     budget_score = (
-                        20
-                        * (1 - budget_ratio)
+                        20 * (1 - budget_ratio * 0.5)
                     )
 
                     score += budget_score
@@ -100,13 +100,17 @@ class RankingAgent:
 
                 else:
 
-                    # This normally won't happen
-                    # because retrieval filters it.
-                    score -= 20
+                    # Being over budget is a penalty,
+                    # but not an automatic rejection.
+                    score -= 15
 
-            # -------------------------
-            # 4. Rating
-            # -------------------------
+                    reasons.append(
+                        "slightly above your budget"
+                    )
+
+            # --------------------------------
+            # 4. PRODUCT QUALITY - 10 POINTS
+            # --------------------------------
 
             rating_score = (
                 product["rating"] / 5
@@ -114,9 +118,9 @@ class RankingAgent:
 
             score += rating_score
 
-            # -------------------------
-            # 5. Cheaper Preference
-            # -------------------------
+            # --------------------------------
+            # 5. CHEAPER PREFERENCE
+            # --------------------------------
 
             if "cheaper" in preferences:
 
@@ -124,31 +128,29 @@ class RankingAgent:
 
                     if product["price"] <= budget * 0.75:
 
-                        score += 10
+                        score += 8
 
                         reasons.append(
                             "especially affordable"
                         )
 
-            # -------------------------
-            # 6. Premium Preference
-            # -------------------------
+            # --------------------------------
+            # 6. PREMIUM PREFERENCE
+            # --------------------------------
 
             if "premium" in preferences:
 
-                if budget:
+                if product["rating"] >= 4.7:
 
-                    if product["price"] >= budget * 0.75:
+                    score += 8
 
-                        score += 10
+                    reasons.append(
+                        "highly rated premium option"
+                    )
 
-                        reasons.append(
-                            "premium option"
-                        )
-
-            # -------------------------
-            # Final Score
-            # -------------------------
+            # --------------------------------
+            # 7. FINAL SCORE
+            # --------------------------------
 
             score = max(
                 0,
@@ -170,9 +172,9 @@ class RankingAgent:
 
         # Highest fit first
         ranked.sort(
-            key=lambda item: item["fit_score"],
+            key=lambda item:
+            item["fit_score"],
             reverse=True
         )
 
         return ranked
-

@@ -15,7 +15,6 @@ class Orchestrator:
 
     def __init__(self):
 
-        # Initialize all agents
         self.ingestion = QueryIngestionAgent()
         self.intent = IntentExtractionAgent()
         self.clarification = ClarificationAgent()
@@ -34,50 +33,43 @@ class Orchestrator:
 
     def run(self, session_id, query):
 
-        # -------------------------
-        # 1. Clean user query
-        # -------------------------
+        # --------------------------------
+        # 1. INGESTION
+        # --------------------------------
 
         normalized = self.ingestion.run(
             query
         )
 
-        # -------------------------
-        # 2. Extract new intent
-        # -------------------------
+        # --------------------------------
+        # 2. INTENT EXTRACTION
+        # --------------------------------
 
         new_intent = self.intent.run(
             normalized
         )
 
-        # -------------------------
-        # 3. Retrieve previous memory
-        # -------------------------
+        # --------------------------------
+        # 3. SESSION MEMORY
+        # --------------------------------
 
         previous_intent = self.memory.get(
             session_id
         )
-
-        # -------------------------
-        # 4. Merge conversation memory
-        # -------------------------
 
         intent = self.memory.merge(
             previous_intent,
             new_intent
         )
 
-        # Save the merged intent immediately.
-        # This allows the assistant to remember
-        # information even during clarification.
         self.memory.update(
             session_id,
             intent
         )
 
-        # -------------------------
-        # 5. Check for clarification
-        # -------------------------
+        # --------------------------------
+        # 4. CLARIFICATION
+        # --------------------------------
 
         clarification = self.clarification.run(
             intent
@@ -91,33 +83,29 @@ class Orchestrator:
                 "intent": intent
             }
 
-        # -------------------------
-        # 6. Create execution plan
-        # -------------------------
+        # --------------------------------
+        # 5. INITIAL PLAN
+        # --------------------------------
 
         plan = self.planner.create_plan(
             intent
         )
 
-        # -------------------------
-        # 7. Map intent to catalog
-        # -------------------------
+        # --------------------------------
+        # 6. FIRST RETRIEVAL + RANKING
+        # --------------------------------
 
         attributes = self.mapping.run(
             intent
         )
 
-        # -------------------------
-        # 8. Retrieve candidates
-        # -------------------------
-
         candidates = self.retrieval.run(
             attributes
         )
 
-        # -------------------------
-        # 9. Zero-result fallback
-        # -------------------------
+        # --------------------------------
+        # 7. ZERO RESULT
+        # --------------------------------
 
         if not candidates:
 
@@ -125,49 +113,106 @@ class Orchestrator:
                 intent
             )
 
-            # Include intent and plan
-            # for transparency/debugging.
             fallback["intent"] = intent
             fallback["plan"] = plan
 
             return fallback
-
-        # -------------------------
-        # 10. Rank candidates
-        # -------------------------
 
         ranked = self.ranking.run(
             candidates,
             intent
         )
 
-        # -------------------------
-        # 11. Take top 3
-        # -------------------------
-
         ranked = ranked[:3]
 
-        # -------------------------
-        # 12. Generate explanations
-        # -------------------------
-
-        ranked = self.explanation.run(
-            ranked,
-            intent
-        )
-
-        # -------------------------
-        # 13. Review recommendations
-        # -------------------------
+        # --------------------------------
+        # 8. REVIEW
+        # --------------------------------
 
         review = self.reviewer.review(
             ranked,
             intent
         )
 
-        # -------------------------
-        # 14. Return final response
-        # -------------------------
+        # --------------------------------
+        # 9. RE-PLAN IF NEEDED
+        # --------------------------------
+
+        if review.get("needs_replan"):
+
+            replan = self.planner.create_replan(
+                intent,
+                review
+            )
+
+            # Create a modified intent
+            replanned_intent = intent.copy()
+
+            replanned_intent["preferences"] = (
+                replan["preferences"]
+            )
+
+            # Run retrieval again
+            replan_attributes = (
+                self.mapping.run(
+                    replanned_intent
+                )
+            )
+
+            replan_candidates = (
+                self.retrieval.run(
+                    replan_attributes
+                )
+            )
+
+            if replan_candidates:
+
+                replan_ranked = (
+                    self.ranking.run(
+                        replan_candidates,
+                        replanned_intent
+                    )
+                )
+
+                replan_ranked = (
+                    replan_ranked[:3]
+                )
+
+                replan_review = (
+                    self.reviewer.review(
+                        replan_ranked,
+                        replanned_intent
+                    )
+                )
+
+                # Use the replanned results
+                # if they are approved.
+                if replan_review.get(
+                    "approved"
+                ):
+
+                    intent = replanned_intent
+
+                    ranked = replan_ranked
+
+                    review = replan_review
+
+                    plan.append(
+                        "replanning"
+                    )
+
+        # --------------------------------
+        # 10. EXPLANATION
+        # --------------------------------
+
+        ranked = self.explanation.run(
+            ranked,
+            intent
+        )
+
+        # --------------------------------
+        # 11. FINAL RESPONSE
+        # --------------------------------
 
         return {
             "type": "recommendation",
@@ -176,4 +221,3 @@ class Orchestrator:
             "review": review,
             "products": ranked
         }
-

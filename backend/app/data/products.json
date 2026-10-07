@@ -1,137 +1,1494 @@
 [
   {
     "id": "P001",
-    "name": "FlexiStep Shock Absorbing Trekking Poles",
+    "name": "AeroTrek Carbon Trekking Poles",
     "category": "hiking",
-    "price": 89,
+    "price": 84,
     "rating": 4.8,
-    "tags": ["hiking", "joint-friendly", "low-impact", "senior-friendly"],
+    "tags": [
+      "hiking",
+      "lightweight",
+      "joint-friendly",
+      "low-impact"
+    ],
     "stock": true
   },
   {
     "id": "P002",
-    "name": "TrailPro Hiking Boots",
+    "name": "TrailBliss Hiking Boots",
     "category": "hiking",
-    "price": 95,
-    "rating": 4.6,
-    "tags": ["hiking", "durable", "comfortable"],
+    "price": 96,
+    "rating": 4.7,
+    "tags": [
+      "hiking",
+      "durable",
+      "comfortable",
+      "waterproof"
+    ],
     "stock": true
   },
   {
     "id": "P003",
-    "name": "ComfortTrail Lightweight Backpack",
+    "name": "CloudTrail Hiking Shoes",
     "category": "hiking",
-    "price": 75,
-    "rating": 4.5,
-    "tags": ["hiking", "lightweight", "comfortable"],
+    "price": 72,
+    "rating": 4.6,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "comfortable"
+    ],
     "stock": true
   },
   {
     "id": "P004",
-    "name": "MountainFlex Knee Support Sleeve",
-    "category": "fitness",
-    "price": 35,
+    "name": "SummitEase Hiking Backpack",
+    "category": "hiking",
+    "price": 88,
     "rating": 4.7,
-    "tags": ["fitness", "joint-friendly", "supportive"],
+    "tags": [
+      "hiking",
+      "lightweight",
+      "comfortable",
+      "durable"
+    ],
     "stock": true
   },
   {
     "id": "P005",
-    "name": "AdventureLite Walking Shoes",
+    "name": "PeakShield Rain Jacket",
     "category": "hiking",
-    "price": 68,
-    "rating": 4.4,
-    "tags": ["hiking", "lightweight", "comfortable"],
+    "price": 79,
+    "rating": 4.6,
+    "tags": [
+      "hiking",
+      "waterproof",
+      "lightweight"
+    ],
     "stock": true
   },
   {
     "id": "P006",
-    "name": "PeakComfort Hiking Socks",
+    "name": "EverTrail Merino Socks",
     "category": "hiking",
-    "price": 22,
-    "rating": 4.3,
-    "tags": ["hiking", "comfortable", "lightweight"],
+    "price": 24,
+    "rating": 4.5,
+    "tags": [
+      "hiking",
+      "comfortable",
+      "lightweight"
+    ],
     "stock": true
   },
   {
     "id": "P007",
-    "name": "TitanTrail Trekking Poles",
+    "name": "FlexTrail Knee-Friendly Poles",
     "category": "hiking",
-    "price": 112,
-    "rating": 4.9,
-    "tags": ["hiking", "joint-friendly", "durable"],
+    "price": 59,
+    "rating": 4.7,
+    "tags": [
+      "hiking",
+      "joint-friendly",
+      "low-impact",
+      "lightweight"
+    ],
     "stock": true
   },
   {
     "id": "P008",
-    "name": "EasyHike Aluminum Poles",
+    "name": "MountainMuse Fleece Jacket",
     "category": "hiking",
-    "price": 48,
+    "price": 68,
     "rating": 4.5,
-    "tags": ["hiking", "low-impact", "lightweight"],
+    "tags": [
+      "hiking",
+      "warm",
+      "comfortable"
+    ],
     "stock": true
   },
   {
     "id": "P009",
-    "name": "TrailGuard Rain Jacket",
+    "name": "TrailGlow Headlamp",
     "category": "hiking",
-    "price": 79,
+    "price": 32,
     "rating": 4.6,
-    "tags": ["hiking", "waterproof", "lightweight"],
+    "tags": [
+      "hiking",
+      "lightweight",
+      "portable"
+    ],
     "stock": true
   },
   {
     "id": "P010",
-    "name": "YogaFlow Premium Mat",
-    "category": "yoga",
-    "price": 55,
-    "rating": 4.7,
-    "tags": ["yoga", "comfortable", "non-slip"],
+    "name": "TerraGrip Hiking Sandals",
+    "category": "hiking",
+    "price": 61,
+    "rating": 4.4,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "comfortable"
+    ],
     "stock": true
   },
   {
     "id": "P011",
-    "name": "FitCore Resistance Band Set",
-    "category": "fitness",
-    "price": 30,
-    "rating": 4.5,
-    "tags": ["fitness", "lightweight", "portable"],
-    "stock": true
+    "name": "SummitPro Waterproof Boots",
+    "category": "hiking",
+    "price": 118,
+    "rating": 4.9,
+    "tags": [
+      "hiking",
+      "waterproof",
+      "durable"
+    ],
+    "stock": false
   },
   {
     "id": "P012",
-    "name": "ActiveLife Smart Fitness Watch",
-    "category": "fitness",
-    "price": 99,
-    "rating": 4.6,
-    "tags": ["fitness", "smart", "tracking"],
-    "stock": true
+    "name": "EasyPeak Walking Shoes",
+    "category": "hiking",
+    "price": 55,
+    "rating": 4.5,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "joint-friendly"
+    ],
+    "stock": false
   },
   {
     "id": "P013",
-    "name": "SoftStep Comfort Insoles",
-    "category": "footwear",
-    "price": 28,
-    "rating": 4.4,
-    "tags": ["joint-friendly", "supportive", "comfortable"],
-    "stock": true
+    "name": "TrailNest Camping Pillow",
+    "category": "hiking",
+    "price": 29,
+    "rating": 4.3,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "comfortable"
+    ],
+    "stock": false
   },
   {
     "id": "P014",
-    "name": "TrailVision Polarized Sunglasses",
+    "name": "AdventureCore Waist Pack",
     "category": "hiking",
-    "price": 45,
-    "rating": 4.5,
-    "tags": ["hiking", "lightweight", "outdoor"],
-    "stock": true
+    "price": 35,
+    "rating": 4.4,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "portable"
+    ],
+    "stock": false
   },
   {
     "id": "P015",
-    "name": "SummitPro Hiking Jacket",
+    "name": "RockRose Insulated Bottle",
     "category": "hiking",
-    "price": 125,
+    "price": 27,
+    "rating": 4.6,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "portable"
+    ],
+    "stock": false
+  },
+  {
+    "id": "P016",
+    "name": "AlpineAura Windbreaker",
+    "category": "hiking",
+    "price": 73,
+    "rating": 4.5,
+    "tags": [
+      "hiking",
+      "lightweight",
+      "waterproof"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P017",
+    "name": "TrekMate Compression Socks",
+    "category": "hiking",
+    "price": 31,
+    "rating": 4.4,
+    "tags": [
+      "hiking",
+      "supportive",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P018",
+    "name": "WildPath GPS Outdoor Watch",
+    "category": "hiking",
+    "price": 109,
+    "rating": 4.7,
+    "tags": [
+      "hiking",
+      "smart",
+      "tracking",
+      "durable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P019",
+    "name": "FlexForm Resistance Band Kit",
+    "category": "fitness",
+    "price": 35,
+    "rating": 4.7,
+    "tags": [
+      "fitness",
+      "lightweight",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P020",
+    "name": "PowerPulse Smart Fitness Watch",
+    "category": "fitness",
+    "price": 99,
+    "rating": 4.6,
+    "tags": [
+      "fitness",
+      "smart",
+      "tracking"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P021",
+    "name": "CoreMuse Adjustable Dumbbells",
+    "category": "fitness",
+    "price": 89,
     "rating": 4.8,
-    "tags": ["hiking", "waterproof", "durable"],
+    "tags": [
+      "fitness",
+      "durable",
+      "home-workout"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P022",
+    "name": "LiftLite Training Gloves",
+    "category": "fitness",
+    "price": 22,
+    "rating": 4.5,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P023",
+    "name": "FlexRecover Foam Roller",
+    "category": "fitness",
+    "price": 39,
+    "rating": 4.6,
+    "tags": [
+      "fitness",
+      "recovery",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P024",
+    "name": "StrongStep Training Shoes",
+    "category": "fitness",
+    "price": 82,
+    "rating": 4.7,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "durable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P025",
+    "name": "MoveMuse Gym Bag",
+    "category": "fitness",
+    "price": 54,
+    "rating": 4.5,
+    "tags": [
+      "fitness",
+      "lightweight",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P026",
+    "name": "ActiveAura Water Bottle",
+    "category": "fitness",
+    "price": 25,
+    "rating": 4.4,
+    "tags": [
+      "fitness",
+      "portable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P027",
+    "name": "PowerBand Pro Set",
+    "category": "fitness",
+    "price": 49,
+    "rating": 4.7,
+    "tags": [
+      "fitness",
+      "portable",
+      "durable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P028",
+    "name": "CoreFlex Ankle Weights",
+    "category": "fitness",
+    "price": 42,
+    "rating": 4.5,
+    "tags": [
+      "fitness",
+      "adjustable",
+      "home-workout"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P029",
+    "name": "LiftLuxe Yoga Blocks",
+    "category": "fitness",
+    "price": 28,
+    "rating": 4.6,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P030",
+    "name": "FitGlow Smart Scale",
+    "category": "fitness",
+    "price": 65,
+    "rating": 4.4,
+    "tags": [
+      "fitness",
+      "smart",
+      "tracking"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P031",
+    "name": "RecoverEase Massage Ball",
+    "category": "fitness",
+    "price": 19,
+    "rating": 4.5,
+    "tags": [
+      "fitness",
+      "recovery",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P032",
+    "name": "MotionPro Training Shorts",
+    "category": "fitness",
+    "price": 36,
+    "rating": 4.5,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P033",
+    "name": "GymMuse Performance Tee",
+    "category": "fitness",
+    "price": 32,
+    "rating": 4.6,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P034",
+    "name": "PowerPeak Kettlebell",
+    "category": "fitness",
+    "price": 58,
+    "rating": 4.7,
+    "tags": [
+      "fitness",
+      "durable",
+      "home-workout"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P035",
+    "name": "FlexiCore Ab Roller",
+    "category": "fitness",
+    "price": 26,
+    "rating": 4.4,
+    "tags": [
+      "fitness",
+      "portable",
+      "home-workout"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P036",
+    "name": "ActiveMuse Sports Bra",
+    "category": "fitness",
+    "price": 44,
+    "rating": 4.6,
+    "tags": [
+      "fitness",
+      "comfortable",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P037",
+    "name": "BlushFlow Premium Yoga Mat",
+    "category": "yoga",
+    "price": 55,
+    "rating": 4.8,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "non-slip"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P038",
+    "name": "CloudMuse Travel Yoga Mat",
+    "category": "yoga",
+    "price": 39,
+    "rating": 4.6,
+    "tags": [
+      "yoga",
+      "lightweight",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P039",
+    "name": "ZenBloom Yoga Blocks",
+    "category": "yoga",
+    "price": 24,
+    "rating": 4.5,
+    "tags": [
+      "yoga",
+      "portable",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P040",
+    "name": "SoftStretch Yoga Strap",
+    "category": "yoga",
+    "price": 18,
+    "rating": 4.4,
+    "tags": [
+      "yoga",
+      "lightweight",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P041",
+    "name": "CalmCore Meditation Cushion",
+    "category": "yoga",
+    "price": 42,
+    "rating": 4.7,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "relaxation"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P042",
+    "name": "RoseFlex Yoga Wheel",
+    "category": "yoga",
+    "price": 34,
+    "rating": 4.6,
+    "tags": [
+      "yoga",
+      "supportive",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P043",
+    "name": "AuraGrip Non-Slip Mat",
+    "category": "yoga",
+    "price": 68,
+    "rating": 4.9,
+    "tags": [
+      "yoga",
+      "non-slip",
+      "comfortable",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P044",
+    "name": "ZenMuse Yoga Bolster",
+    "category": "yoga",
+    "price": 59,
+    "rating": 4.7,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P045",
+    "name": "PetalFlow Yoga Socks",
+    "category": "yoga",
+    "price": 21,
+    "rating": 4.4,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "non-slip"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P046",
+    "name": "LotusLight Yoga Bag",
+    "category": "yoga",
+    "price": 37,
+    "rating": 4.5,
+    "tags": [
+      "yoga",
+      "lightweight",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P047",
+    "name": "MoonMuse Meditation Blanket",
+    "category": "yoga",
+    "price": 46,
+    "rating": 4.6,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "warm"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P048",
+    "name": "BlushBalance Cork Blocks",
+    "category": "yoga",
+    "price": 29,
+    "rating": 4.5,
+    "tags": [
+      "yoga",
+      "supportive",
+      "eco-friendly"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P049",
+    "name": "Serenity Eye Pillow",
+    "category": "yoga",
+    "price": 16,
+    "rating": 4.4,
+    "tags": [
+      "yoga",
+      "relaxation",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P050",
+    "name": "GlowFlow Pilates Ring",
+    "category": "yoga",
+    "price": 31,
+    "rating": 4.6,
+    "tags": [
+      "yoga",
+      "portable",
+      "home-workout"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P051",
+    "name": "LuxeLotus Yoga Set",
+    "category": "yoga",
+    "price": 79,
+    "rating": 4.8,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P052",
+    "name": "ZenCloud Bolster Pillow",
+    "category": "yoga",
+    "price": 52,
+    "rating": 4.5,
+    "tags": [
+      "yoga",
+      "comfortable",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P053",
+    "name": "CloudStep Comfort Sneakers",
+    "category": "footwear",
+    "price": 78,
+    "rating": 4.7,
+    "tags": [
+      "footwear",
+      "comfortable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P054",
+    "name": "SoftStep Support Insoles",
+    "category": "footwear",
+    "price": 28,
+    "rating": 4.5,
+    "tags": [
+      "footwear",
+      "joint-friendly",
+      "supportive",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P055",
+    "name": "EverydayMuse Walking Shoes",
+    "category": "footwear",
+    "price": 64,
+    "rating": 4.6,
+    "tags": [
+      "footwear",
+      "comfortable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P056",
+    "name": "LunaFlex Casual Sneakers",
+    "category": "footwear",
+    "price": 71,
+    "rating": 4.5,
+    "tags": [
+      "footwear",
+      "comfortable",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P057",
+    "name": "CushionCloud Slip-Ons",
+    "category": "footwear",
+    "price": 49,
+    "rating": 4.4,
+    "tags": [
+      "footwear",
+      "comfortable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P058",
+    "name": "UrbanAura Sneakers",
+    "category": "footwear",
+    "price": 86,
+    "rating": 4.7,
+    "tags": [
+      "footwear",
+      "stylish",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P059",
+    "name": "EasyWalk Support Shoes",
+    "category": "footwear",
+    "price": 69,
+    "rating": 4.8,
+    "tags": [
+      "footwear",
+      "joint-friendly",
+      "supportive",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P060",
+    "name": "RoseRun Walking Shoes",
+    "category": "footwear",
+    "price": 74,
+    "rating": 4.6,
+    "tags": [
+      "footwear",
+      "lightweight",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P061",
+    "name": "VelvetStep Lifestyle Shoes",
+    "category": "footwear",
+    "price": 92,
+    "rating": 4.5,
+    "tags": [
+      "footwear",
+      "stylish",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P062",
+    "name": "CloudMuse Recovery Slides",
+    "category": "footwear",
+    "price": 39,
+    "rating": 4.4,
+    "tags": [
+      "footwear",
+      "comfortable",
+      "recovery"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P063",
+    "name": "DailyGlow Sneakers",
+    "category": "footwear",
+    "price": 59,
+    "rating": 4.5,
+    "tags": [
+      "footwear",
+      "stylish",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P064",
+    "name": "SoftAura Walking Trainers",
+    "category": "footwear",
+    "price": 67,
+    "rating": 4.7,
+    "tags": [
+      "footwear",
+      "joint-friendly",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P065",
+    "name": "LuxeStep Everyday Shoes",
+    "category": "footwear",
+    "price": 109,
+    "rating": 4.8,
+    "tags": [
+      "footwear",
+      "stylish",
+      "premium",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P066",
+    "name": "FlexWalk Orthopedic Trainers",
+    "category": "footwear",
+    "price": 95,
+    "rating": 4.7,
+    "tags": [
+      "footwear",
+      "joint-friendly",
+      "supportive"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P067",
+    "name": "PetalWalk Slip-On Shoes",
+    "category": "footwear",
+    "price": 45,
+    "rating": 4.3,
+    "tags": [
+      "footwear",
+      "lightweight",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P068",
+    "name": "StreetMuse Platform Sneakers",
+    "category": "footwear",
+    "price": 83,
+    "rating": 4.6,
+    "tags": [
+      "footwear",
+      "stylish",
+      "durable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P069",
+    "name": "GlowMuse Hydrating Skin Set",
+    "category": "beauty",
+    "price": 48,
+    "rating": 4.7,
+    "tags": [
+      "beauty",
+      "hydrating",
+      "skincare"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P070",
+    "name": "RoseAura Makeup Organizer",
+    "category": "beauty",
+    "price": 32,
+    "rating": 4.5,
+    "tags": [
+      "beauty",
+      "organized",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P071",
+    "name": "BlushBloom Makeup Brush Set",
+    "category": "beauty",
+    "price": 29,
+    "rating": 4.8,
+    "tags": [
+      "beauty",
+      "makeup",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P072",
+    "name": "VelvetGlow Vanity Mirror",
+    "category": "beauty",
+    "price": 69,
+    "rating": 4.7,
+    "tags": [
+      "beauty",
+      "stylish",
+      "lighting"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P073",
+    "name": "LunaLuxe Hair Styling Kit",
+    "category": "beauty",
+    "price": 89,
+    "rating": 4.6,
+    "tags": [
+      "beauty",
+      "hair",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P074",
+    "name": "PetalMist Face Steamer",
+    "category": "beauty",
+    "price": 54,
+    "rating": 4.5,
+    "tags": [
+      "beauty",
+      "skincare",
+      "relaxation"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P075",
+    "name": "GlowCloud Beauty Case",
+    "category": "beauty",
+    "price": 39,
+    "rating": 4.6,
+    "tags": [
+      "beauty",
+      "portable",
+      "organized"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P076",
+    "name": "AuraSkin Mini Fridge",
+    "category": "beauty",
+    "price": 99,
+    "rating": 4.7,
+    "tags": [
+      "beauty",
+      "skincare",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P077",
+    "name": "BlushMuse Travel Vanity",
+    "category": "beauty",
+    "price": 76,
+    "rating": 4.6,
+    "tags": [
+      "beauty",
+      "portable",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P078",
+    "name": "RosePetal Hair Brush",
+    "category": "beauty",
+    "price": 22,
+    "rating": 4.4,
+    "tags": [
+      "beauty",
+      "hair",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P079",
+    "name": "SilkGlow Sleep Mask",
+    "category": "beauty",
+    "price": 18,
+    "rating": 4.5,
+    "tags": [
+      "beauty",
+      "comfortable",
+      "relaxation"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P080",
+    "name": "LuxeBloom Cosmetic Bag",
+    "category": "beauty",
+    "price": 27,
+    "rating": 4.6,
+    "tags": [
+      "beauty",
+      "portable",
+      "organized"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P081",
+    "name": "GlowAura Facial Roller",
+    "category": "beauty",
+    "price": 25,
+    "rating": 4.4,
+    "tags": [
+      "beauty",
+      "skincare",
+      "relaxation"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P082",
+    "name": "MuseLight Vanity Lamp",
+    "category": "beauty",
+    "price": 45,
+    "rating": 4.5,
+    "tags": [
+      "beauty",
+      "lighting",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P083",
+    "name": "PocketMuse Wireless Earbuds",
+    "category": "electronics",
+    "price": 79,
+    "rating": 4.6,
+    "tags": [
+      "electronics",
+      "portable",
+      "smart"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P084",
+    "name": "GlowDesk LED Lamp",
+    "category": "electronics",
+    "price": 42,
+    "rating": 4.5,
+    "tags": [
+      "electronics",
+      "lighting",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P085",
+    "name": "SmartMuse Fitness Tracker",
+    "category": "electronics",
+    "price": 89,
+    "rating": 4.7,
+    "tags": [
+      "electronics",
+      "smart",
+      "tracking"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P086",
+    "name": "AirBeat Noise Cancelling Headphones",
+    "category": "electronics",
+    "price": 129,
+    "rating": 4.8,
+    "tags": [
+      "electronics",
+      "premium",
+      "smart"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P087",
+    "name": "PocketCharge Power Bank",
+    "category": "electronics",
+    "price": 35,
+    "rating": 4.5,
+    "tags": [
+      "electronics",
+      "portable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P088",
+    "name": "MiniAura Bluetooth Speaker",
+    "category": "electronics",
+    "price": 49,
+    "rating": 4.6,
+    "tags": [
+      "electronics",
+      "portable",
+      "smart"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P089",
+    "name": "StudyGlow Desk Light",
+    "category": "electronics",
+    "price": 38,
+    "rating": 4.4,
+    "tags": [
+      "electronics",
+      "lighting",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P090",
+    "name": "TravelTech Charging Hub",
+    "category": "electronics",
+    "price": 59,
+    "rating": 4.5,
+    "tags": [
+      "electronics",
+      "portable",
+      "travel"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P091",
+    "name": "SmartSip Temperature Bottle",
+    "category": "electronics",
+    "price": 74,
+    "rating": 4.6,
+    "tags": [
+      "electronics",
+      "smart",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P092",
+    "name": "LuxeSound Wireless Headphones",
+    "category": "electronics",
+    "price": 119,
+    "rating": 4.8,
+    "tags": [
+      "electronics",
+      "premium",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P093",
+    "name": "ClipMuse Portable Fan",
+    "category": "electronics",
+    "price": 24,
+    "rating": 4.3,
+    "tags": [
+      "electronics",
+      "portable",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P094",
+    "name": "FocusFlow Pomodoro Timer",
+    "category": "electronics",
+    "price": 29,
+    "rating": 4.4,
+    "tags": [
+      "electronics",
+      "study",
+      "smart"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P095",
+    "name": "CloudMuse Everyday Tote",
+    "category": "bags",
+    "price": 45,
+    "rating": 4.6,
+    "tags": [
+      "bags",
+      "stylish",
+      "lightweight"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P096",
+    "name": "LunaLuxe Mini Backpack",
+    "category": "bags",
+    "price": 58,
+    "rating": 4.7,
+    "tags": [
+      "bags",
+      "stylish",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P097",
+    "name": "WorkMuse Laptop Tote",
+    "category": "bags",
+    "price": 72,
+    "rating": 4.6,
+    "tags": [
+      "bags",
+      "work",
+      "organized"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P098",
+    "name": "TravelBloom Weekender",
+    "category": "bags",
+    "price": 89,
+    "rating": 4.8,
+    "tags": [
+      "bags",
+      "travel",
+      "spacious"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P099",
+    "name": "PetalPocket Crossbody",
+    "category": "bags",
+    "price": 39,
+    "rating": 4.5,
+    "tags": [
+      "bags",
+      "lightweight",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P100",
+    "name": "AuraCarry Convertible Backpack",
+    "category": "bags",
+    "price": 79,
+    "rating": 4.7,
+    "tags": [
+      "bags",
+      "versatile",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P101",
+    "name": "StudyMuse Laptop Backpack",
+    "category": "bags",
+    "price": 64,
+    "rating": 4.6,
+    "tags": [
+      "bags",
+      "organized",
+      "comfortable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P102",
+    "name": "LuxeTravel Organizer",
+    "category": "bags",
+    "price": 34,
+    "rating": 4.4,
+    "tags": [
+      "bags",
+      "travel",
+      "organized"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P103",
+    "name": "GymGlow Duffel",
+    "category": "bags",
+    "price": 55,
+    "rating": 4.5,
+    "tags": [
+      "bags",
+      "fitness",
+      "spacious"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P104",
+    "name": "RoseRoute Travel Backpack",
+    "category": "bags",
+    "price": 95,
+    "rating": 4.7,
+    "tags": [
+      "bags",
+      "travel",
+      "durable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P105",
+    "name": "SelfCare Sunday Gift Box",
+    "category": "gifts",
+    "price": 49,
+    "rating": 4.8,
+    "tags": [
+      "gifts",
+      "relaxation",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P106",
+    "name": "CozyNight Candle Set",
+    "category": "gifts",
+    "price": 32,
+    "rating": 4.7,
+    "tags": [
+      "gifts",
+      "relaxation",
+      "home"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P107",
+    "name": "CoffeeLover Tasting Box",
+    "category": "gifts",
+    "price": 38,
+    "rating": 4.6,
+    "tags": [
+      "gifts",
+      "food",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P108",
+    "name": "Adventure Gift Kit",
+    "category": "gifts",
+    "price": 65,
+    "rating": 4.7,
+    "tags": [
+      "gifts",
+      "hiking",
+      "outdoor"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P109",
+    "name": "Wellness Starter Box",
+    "category": "gifts",
+    "price": 57,
+    "rating": 4.6,
+    "tags": [
+      "gifts",
+      "fitness",
+      "relaxation"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P110",
+    "name": "DeskGlow Gift Set",
+    "category": "gifts",
+    "price": 44,
+    "rating": 4.5,
+    "tags": [
+      "gifts",
+      "work",
+      "stylish"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P111",
+    "name": "LuxePamper Gift Hamper",
+    "category": "gifts",
+    "price": 85,
+    "rating": 4.9,
+    "tags": [
+      "gifts",
+      "beauty",
+      "premium"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P112",
+    "name": "TravelReady Gift Box",
+    "category": "gifts",
+    "price": 61,
+    "rating": 4.7,
+    "tags": [
+      "gifts",
+      "travel",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P113",
+    "name": "FitnessFan Gift Bundle",
+    "category": "gifts",
+    "price": 72,
+    "rating": 4.8,
+    "tags": [
+      "gifts",
+      "fitness",
+      "portable"
+    ],
+    "stock": true
+  },
+  {
+    "id": "P114",
+    "name": "Hiker's Essentials Gift Set",
+    "category": "gifts",
+    "price": 79,
+    "rating": 4.8,
+    "tags": [
+      "gifts",
+      "hiking",
+      "outdoor",
+      "durable"
+    ],
     "stock": true
   }
 ]

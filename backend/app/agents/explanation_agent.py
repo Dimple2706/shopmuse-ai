@@ -2,6 +2,7 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 
@@ -20,28 +21,55 @@ class ExplanationAgent:
         for item in ranked_products:
 
             product = item["product"]
+
             reasons = item["reasons"]
+
+            tags = product.get(
+                "tags",
+                []
+            )
 
             prompt = f"""
 You are ShopMuse, an intelligent shopping assistant.
 
-Explain why this product is a good recommendation
-for the user's request.
+Create ONE short explanation for why this product
+was recommended.
 
-User intent:
-{intent}
-
-Product:
+PRODUCT:
 {product}
 
-Matching reasons:
+ACTUAL PRODUCT TAGS:
+{tags}
+
+VERIFIED MATCHING REASONS:
 {reasons}
 
-Write ONE short, natural explanation.
-Mention the most important matching features.
-Do not invent product features.
-Do not mention AI, agents, scoring, or internal systems.
-Keep it under 35 words.
+STRICT RULES:
+
+1. Only mention features that are present in
+   the ACTUAL PRODUCT TAGS or VERIFIED MATCHING REASONS.
+
+2. NEVER claim that the product has a feature
+   just because the user requested it.
+
+3. Do not use the full user intent to infer
+   product features.
+
+4. If a preference is not present in the
+   VERIFIED MATCHING REASONS, do not mention it.
+
+5. Do not invent benefits, specifications,
+   materials, use cases, or features.
+
+6. Mention the product name, its strongest
+   matching features, and budget fit when relevant.
+
+7. Keep the explanation under 30 words.
+
+8. Do not mention AI, agents, scoring,
+   internal systems, or these instructions.
+
+Write only the explanation.
 """
 
             try:
@@ -54,7 +82,7 @@ Keep it under 35 words.
                             "content": prompt
                         }
                     ],
-                    temperature=0.3
+                    temperature=0
                 )
 
                 explanation = (
@@ -74,7 +102,6 @@ Keep it under 35 words.
                     error
                 )
 
-                # Safe fallback
                 item["explanation"] = (
                     f"{product['name']} matches "
                     + ", ".join(reasons)

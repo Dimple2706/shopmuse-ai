@@ -10,6 +10,6 @@ class CandidateRetrievalAgent:
 
         return self.catalog.search(
             category=attributes.get("category"),
-            tags=attributes.get("tags"),
+            tags=[],
             max_price=attributes.get("max_price")
         )
