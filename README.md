@@ -1,660 +1,390 @@
 # 🛍️ ShopMuse AI
+### RAG-Powered Conversational Shopping Assistant | Multi-Agent Product Discovery System
 
-### Conversational Shopping Assistant using a Planner–Reviewer Multi-Agent Architecture
+ShopMuse AI is an intelligent conversational shopping assistant that helps users discover products through natural-language conversations.
 
-ShopMuse AI is an **agentic conversational shopping assistant** that helps users discover relevant products through natural-language queries.
+Instead of relying only on traditional keyword searches and filters, ShopMuse understands shopping intent, extracts constraints, remembers preferences, retrieves relevant products, ranks recommendations, and explains why each product is suitable.
 
-Instead of relying on a single recommendation model, ShopMuse uses a **multi-agent workflow** where specialized agents handle query understanding, catalog mapping, retrieval, ranking, explanation, memory, fallback handling, planning, and review.
-
-The system follows a **Planner → Execute → Reviewer → Replan** workflow to make recommendations more reliable and adaptable to user preferences.
-
----
+The upgraded system integrates **Retrieval-Augmented Generation (RAG), ChromaDB, MongoDB, and a multi-agent architecture** to support semantic product discovery, grounded recommendations, and responsible AI-assisted shopping.
 
 ## ✨ Key Features
 
-* 💬 Natural-language conversational shopping
-* 🤖 Multi-agent recommendation architecture
-* 🧠 Planner–Reviewer workflow
-* 🔄 Automatic replanning when requirements cannot be satisfied
-* 🔍 Product retrieval and ranking
-* 🎯 Preference-aware recommendations
-* 💡 Evidence-based "Why this?" explanations
-* 🧠 Session memory for conversational context
-* 🛟 Fallback recommendations for difficult/impossible queries
-* 🛒 Interactive product cards
-* 📋 Product details view
-* 🎀 Responsive pink-themed shopping interface
-* ⚡ FastAPI backend
-* ⚛️ React + Vite frontend
-* 📊 Agent workflow designed for observability and debugging
+- **Conversational Product Discovery:** Understands vague, complex, and evolving shopping requests.
+- **Multi-Agent Architecture:** Uses 10 specialized agents coordinated by an Orchestrator, Planner, and Reviewer.
+- **RAG-Based Recommendations:** Retrieves relevant product context before generating recommendation explanations.
+- **Hybrid Product Retrieval:** Combines semantic similarity search with structured catalog filtering.
+- **ChromaDB Vector Database:** Stores product embeddings for semantic retrieval.
+- **MongoDB Catalog Storage:** Maintains structured product records, prices, ratings, categories, and stock availability.
+- **Session Memory:** Retains shopping preferences across follow-up messages.
+- **Intelligent Clarification:** Requests additional information when essential shopping requirements are missing.
+- **Constraint-Aware Ranking:** Evaluates products using budget, category, preferences, and ratings.
+- **Planner–Reviewer Workflow:** Plans retrieval steps, validates recommendations, and supports replanning.
+- **Explainable Recommendations:** Provides product-specific explanations and matching reasons.
+- **Zero-Result Fallback:** Suggests alternatives when suitable products are unavailable.
+- **Product Comparison:** Allows users to compare up to three recommended products.
+- **ShopMuse Pick:** Highlights the highest-ranked recommendation.
+- **Guardrails:** Provides input validation, constraint checks, and product-claim verification.
+- **Governance:** Introduces privacy-conscious logging, access-control provisions, and responsible recommendation safeguards.
 
----
+## 🧠 Multi-Agent Architecture
 
-# 🏗️ System Architecture
+ShopMuse retains its original 10 agents, with additional planning and reviewing components.
 
-```text
-                         ┌───────────────┐
-                         │     USER      │
-                         └───────┬───────┘
-                                 │
-                                 ▼
-                     ┌─────────────────────┐
-                     │    React + Vite     │
-                     │     Frontend        │
-                     └──────────┬──────────┘
-                                │
-                                ▼
-                     ┌─────────────────────┐
-                     │     FastAPI API     │
-                     └──────────┬──────────┘
-                                │
-                                ▼
-                 ┌────────────────────────────┐
-                 │        ORCHESTRATOR        │
-                 │                            │
-                 │ Planner → Agents →         │
-                 │ Reviewer → Replanning      │
-                 └─────────────┬──────────────┘
-                               │
-       ┌───────────────────────┼──────────────────────┐
-       │                       │                      │
-       ▼                       ▼                      ▼
-┌───────────────┐      ┌────────────────┐     ┌───────────────┐
-│ Query / Intent│      │ Catalog &      │     │ Session       │
-│ Understanding │      │ Retrieval      │     │ Memory        │
-└───────────────┘      └───────┬────────┘     └───────────────┘
-                               │
-                               ▼
-                       ┌───────────────┐
-                       │    Ranking    │
-                       │     Agent     │
-                       └───────┬───────┘
-                               │
-                               ▼
-                       ┌───────────────┐
-                       │ Explanation   │
-                       │     Agent     │
-                       └───────┬───────┘
-                               │
-                               ▼
-                       ┌───────────────┐
-                       │   Reviewer    │
-                       │     Agent     │
-                       └───────┬───────┘
-                               │
-                     ┌─────────┴─────────┐
-                     │                   │
-                  APPROVE              REJECT
-                     │                   │
-                     ▼                   ▼
-                 Results UI           Re-plan
-                                         │
-                                         └──────► Planner
-```
+| Agent | Responsibility |
+|---|---|
+| Query Ingestion Agent | Normalizes incoming user queries |
+| Intent & Constraint Extraction Agent | Identifies categories, budgets, preferences, recipients, and occasions |
+| Ambiguity & Clarification Agent | Requests missing information |
+| Catalog Attribute Mapping Agent | Converts shopping intent into searchable catalog attributes |
+| Candidate Retrieval Agent | Retrieves relevant products through the tool layer |
+| Ranking & Fit Scoring Agent | Scores products based on suitability |
+| Explanation Generation Agent | Produces grounded product explanations |
+| Zero-Result & Fallback Agent | Handles unsuccessful searches |
+| Session Memory Agent | Maintains conversational context |
+| Orchestrator Agent | Coordinates the end-to-end workflow |
+| Planner Agent | Creates execution plans and supports replanning |
+| Reviewer Agent | Validates recommendations against requirements |
 
----
-
-# 🤖 Multi-Agent Architecture
-
-ShopMuse divides the shopping task into specialized agents.
-
-### 1. Query Ingestion Agent
-
-Receives and preprocesses the user's natural-language shopping request.
-
-**Example:**
-
-> "I need lightweight hiking products under $50."
-
----
-
-### 2. Intent Extraction Agent
-
-Extracts important shopping requirements such as:
-
-* Category
-* Budget
-* Activity
-* Product attributes
-* Preferences
-* Constraints
-
-Example:
+## 🏗️ System Architecture
 
 ```text
-Category: Hiking
-Budget: <$50
-Preference: Lightweight
+                    USER
+                      |
+                React Frontend
+                      |
+                FastAPI Backend
+                      |
+                 Orchestrator
+                      |
+                    Planner
+                      |
+               Query Ingestion
+                      |
+          Intent & Constraint Extraction
+                      |
+                Clarification
+                      |
+              Attribute Mapping
+                      |
+              RAG / Hybrid Retrieval
+                      |
+              API / Tool Layer
+                      |
+          +-----------+-----------+
+          |                       |
+       ChromaDB                 MongoDB
+   Semantic Search         Structured Catalog
+   Product Embeddings      Price, Stock, Details
+          |                       |
+          +-----------+-----------+
+                      |
+              Candidate Retrieval
+                      |
+              Ranking & Fit Scoring
+                      |
+                   Reviewer
+                      |
+           Approval / Replanning
+                      |
+              Explanation Agent
+                      |
+             Final Recommendations
 ```
 
----
+**Cross-cutting components:**
 
-### 3. Clarification Agent
+- Session Memory
+- Input and Output Guardrails
+- Governance and Compliance
+- Audit Logging
+- Error Handling and Fallbacks
 
-Handles ambiguous queries and identifies information that may be required before making recommendations.
+## 🔍 RAG and Hybrid Retrieval
 
-For example:
+ShopMuse uses a retrieval-augmented approach to improve product discovery.
 
-```text
-User:
-"I need something good for hiking."
+**1. Query Understanding**
 
-System:
-"What is your preferred budget?"
-```
+The system extracts shopping requirements such as product category, maximum budget, desired features, and user preferences.
 
----
+**2. Semantic Search**
 
-### 4. Catalog Mapping Agent
+ChromaDB stores vector embeddings of product information. Semantic retrieval helps identify relevant products even when the user's wording differs from catalog keywords.
 
-Maps natural-language requirements to attributes available in the product catalog.
+**3. Structured Retrieval**
 
-For example:
+MongoDB supplies authoritative product information, including prices, ratings, availability, categories, and tags.
 
-```text
-"lightweight"
-        ↓
-weight attribute
+**4. Hybrid Retrieval**
 
-"waterproof"
-        ↓
-waterproof attribute
-```
+Semantic results and structured catalog information are combined to identify suitable candidates while enforcing hard constraints.
 
-This allows the system to connect conversational requirements with structured catalog data.
+**5. Recommendation Generation**
 
----
+The Ranking Agent evaluates retrieved candidates, the Reviewer validates the results, and the Explanation Agent generates descriptions grounded in retrieved product information.
 
-### 5. Candidate Retrieval Agent
+## 🗄️ Database Architecture
 
-Retrieves products that potentially satisfy the user's requirements.
+### MongoDB — Structured Product Catalog
 
-The retrieval stage narrows the catalog down to relevant candidates before ranking.
+Stores product information such as:
 
----
+- Product ID and name
+- Category
+- Price
+- Rating
+- Product tags
+- Stock availability
 
-### 6. Ranking Agent
+### ChromaDB — Vector Database
 
-Ranks retrieved candidates according to factors such as:
+Stores product embeddings for semantic similarity search.
 
-* User preferences
-* Budget
-* Category relevance
-* Product attributes
-* Requirement matching
+Each product's vector representation is associated with its catalog identity, allowing retrieved results to be matched against MongoDB records.
 
-The highest-quality candidates are presented to the user.
+**Current catalog:** 114 products and 114 vector embeddings successfully seeded.
 
----
+## 🛠️ API and Tool Layer
 
-### 7. Explanation Agent
+The dedicated tool layer separates agent logic from database implementation details.
 
-Generates explanations for why a product was recommended.
+It supports operations for product search, product details, semantic search, availability and pricing, and catalog access.
 
-The explanation is grounded in available product information and recommendation evidence rather than inventing unsupported product attributes.
+This makes the architecture more modular and allows the retrieval implementation to evolve without unnecessarily rewriting the agents.
 
-Example:
+## 🛡️ Guardrails and Governance
 
-```text
-✓ Within your $50 budget
-✓ Lightweight
-✓ Suitable for hiking
-```
+ShopMuse introduces foundational safeguards for safer product recommendations.
 
----
+**Guardrails**
 
-### 8. Reviewer Agent
+- Input validation
+- Shopping constraint validation
+- Prompt-injection protection measures
+- Controlled tool usage
+- Product information verification
+- Prevention of unsupported product claims
 
-Reviews the generated recommendation plan and checks whether the user's requirements can actually be satisfied.
+**Governance and Compliance**
 
-The Reviewer can identify unsupported or unavailable requirements.
+- Privacy-conscious handling of user information
+- Access-control provisions
+- Secure database and tool configuration
+- Audit logging
+- Responsible product recommendation practices
 
----
+These controls provide a foundation for responsible AI development and are not a claim of complete security or regulatory certification.
 
-### 9. Planner Agent
+## 💬 Session Memory and Refinement
 
-Creates the recommendation plan and coordinates the shopping workflow.
+ShopMuse supports follow-up requests without requiring users to repeat their complete shopping requirements.
 
-The Planner can also create a revised plan when the Reviewer rejects the original plan.
+**Example conversation:**
 
----
+**User:** I need lightweight hiking equipment under $100.
 
-### 10. Fallback Agent
+**ShopMuse:** Retrieves and ranks relevant hiking products.
 
-Handles cases where the exact request cannot be satisfied.
+**User:** Make it cheaper.
 
-Instead of returning no result, ShopMuse can provide the closest available alternatives and explain the limitation.
+**ShopMuse:** Retains the hiking context and adjusts the budget.
 
----
+**User:** I also want something comfortable.
 
-### 11. Session Memory Agent
-
-Maintains relevant conversational context so that subsequent queries can build on previous preferences.
-
-Example:
-
-```text
-User:
-"Show me hiking products under $50."
-
-User:
-"Make it cheaper."
-
-System:
-Updates the existing shopping context
-instead of treating the second query independently.
-```
-
----
-
-# 🔄 Planner–Reviewer Workflow
-
-The core agentic behavior of ShopMuse is the **Planner–Reviewer loop**.
-
-```text
-User Query
-    │
-    ▼
-Planner
-    │
-    ▼
-Agent Execution
-    │
-    ▼
-Recommendations
-    │
-    ▼
-Reviewer
-    │
-    ├──────────────► APPROVED
-    │                    │
-    │                    ▼
-    │               Final Results
-    │
-    └──────────────► REJECTED
-                         │
-                         ▼
-                     Re-planning
-                         │
-                         ▼
-                       Planner
-```
-
-### Example
-
-User requests:
-
-> "I need a waterproof, lightweight and comfortable hiking product under $50."
-
-If the catalog cannot satisfy all requirements, the Reviewer identifies the unsupported constraint.
-
-The Planner then revises the plan rather than blindly returning an invalid recommendation.
-
-```text
-Initial Requirements
-        │
-        ▼
-Waterproof + Lightweight + Comfortable
-        │
-        ▼
-     Reviewer
-        │
-        ▼
-Waterproof requirement unavailable
-        │
-        ▼
-      Re-plan
-        │
-        ▼
-Lightweight + Comfortable
-        │
-        ▼
-Updated Recommendations
-```
-
-This demonstrates that the system is **adaptive rather than a simple single-pass recommender**.
-
----
-
-# 🧠 Example Interaction
-
-### User
-
-```text
-I need lightweight hiking products under $50.
-```
-
-### ShopMuse
-
-```text
-Intent:
-Hiking
-
-Budget:
-$50
-
-Preference:
-Lightweight
-```
-
-The system retrieves and ranks relevant products and displays them through interactive product cards.
-
-Users can then:
-
-* View product details
-* See why a product was recommended
-* Continue the conversation
-* Modify their preferences
-
----
-
-# 🛟 Fallback Handling
-
-ShopMuse is designed to handle cases where the exact request cannot be fulfilled.
-
-For example:
-
-```text
-User:
-"Show me hiking gear under $10."
-```
-
-If there are no suitable products under the requested budget, the system can switch to a fallback strategy and provide the closest relevant alternatives instead of failing silently.
-
-This makes the conversational experience more robust.
-
----
-
-# 💡 Explainability
-
-Each recommendation can provide a **"Why this?"** explanation.
-
-The explanation focuses on attributes supported by the catalog and recommendation process.
-
-Example:
-
-```text
-Why this product?
-
-✓ Matches hiking category
-✓ Fits your budget
-✓ Lightweight
-✓ Matches your requested preferences
-```
-
-The system avoids presenting unsupported product characteristics as facts.
-
----
-
-# 🎨 Frontend
-
-The frontend is built with **React and Vite**.
-
-### Main UI components
-
-* Conversational shopping interface
-* Product cards
-* Product details modal
-* Recommendation explanations
-* Interactive controls
-* Responsive layout
-* Pink / feminine shopping aesthetic
-
----
-
-# ⚙️ Backend
-
-The backend uses **FastAPI** to expose the shopping assistant functionality.
-
-The backend coordinates:
-
-```text
-User Request
-     ↓
-FastAPI
-     ↓
-Orchestrator
-     ↓
-Multi-Agent Workflow
-     ↓
-Recommendation Response
-     ↓
-Frontend
-```
-
----
-
-# 📁 Project Structure
+**ShopMuse:** Incorporates the additional preference while retaining relevant earlier requirements.
+
+Session memory enables contextual shopping conversations and iterative recommendation refinement.
+
+## 💻 Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React, Vite, JavaScript |
+| Styling | CSS, Lucide React |
+| Backend | Python, FastAPI |
+| LLM Integration | Groq API |
+| Structured Database | MongoDB |
+| Vector Database | ChromaDB |
+| Embeddings | Sentence-transformer-based embedding model |
+| Retrieval | Hybrid structured and semantic search |
+| Architecture | Multi-Agent System, RAG, Planner–Reviewer |
+| API Documentation | FastAPI Swagger UI |
+
+## 📂 Project Structure
 
 ```text
 shopmuse-ai/
-│
 ├── backend/
-│   └── app/
-│       ├── agents/
-│       │   ├── clarification_agent.py
-│       │   ├── explanation_agent.py
-│       │   ├── mapping_agent.py
-│       │   ├── orchestrator.py
-│       │   ├── planner.py
-│       │   ├── ranking_agent.py
-│       │   ├── retrieval_agent.py
-│       │   ├── reviewer.py
-│       │   └── ...
-│       │
-│       ├── data/
-│       │   └── products.json
-│       │
-│       └── main.py
-│
+│   ├── app/
+│   │   ├── agents/
+│   │   │   ├── ingestion_agent.py
+│   │   │   ├── intent_agent.py
+│   │   │   ├── clarification_agent.py
+│   │   │   ├── mapping_agent.py
+│   │   │   ├── retrieval_agent.py
+│   │   │   ├── ranking_agent.py
+│   │   │   ├── explanation_agent.py
+│   │   │   ├── fallback_agent.py
+│   │   │   ├── memory_agent.py
+│   │   │   ├── planner.py
+│   │   │   ├── reviewer.py
+│   │   │   └── orchestrator.py
+│   │   ├── tools/
+│   │   │   ├── catalog_tool.py
+│   │   │   ├── product_tools.py
+│   │   │   └── semantic_tool.py
+│   │   ├── security/
+│   │   │   └── guardrails.py
+│   │   ├── governance/
+│   │   │   └── audit.py
+│   │   ├── scripts/
+│   │   │   └── seed_catalog.py
+│   │   ├── data/
+│   │   │   └── products.json
+│   │   ├── models/
+│   │   ├── utils/
+│   │   └── main.py
+│   ├── tests/
+│   ├── .env.example
+│   └── requirements.txt
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   └── ProductCard.jsx
+│   │   │   ├── ChatBox.jsx
+│   │   │   ├── ProductCard.jsx
+│   │   │   └── AgentActivity.jsx
 │   │   ├── App.jsx
 │   │   └── index.css
-│   │
 │   └── package.json
-│
+├── docs/
+│   └── ARCHITECTURE_V2.md
 ├── .gitignore
 └── README.md
 ```
 
----
+## 🚀 Installation and Setup
 
-# 🛠️ Tech Stack
-
-| Layer           | Technology         |
-| --------------- | ------------------ |
-| Frontend        | React              |
-| Build Tool      | Vite               |
-| Styling         | CSS                |
-| Backend         | FastAPI            |
-| Language        | Python             |
-| Product Data    | JSON               |
-| Architecture    | Multi-Agent System |
-| Workflow        | Planner–Reviewer   |
-| Version Control | Git + GitHub       |
-
----
-
-# 🚀 Running the Project Locally
-
-## 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Dimple2706/shopmuse-ai.git
 cd shopmuse-ai
 ```
 
-## 2. Backend Setup
-
-Navigate to the backend:
-
-```bash
-cd backend
-```
-
-Create a virtual environment:
-
-```bash
-python -m venv .venv
-```
-
-Activate it on Windows:
+### 2. Backend Setup
 
 ```powershell
-.venv\Scripts\Activate.ps1
-```
-
-Install dependencies:
-
-```bash
+cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-Start the FastAPI server:
+### 3. Environment Configuration
 
-```bash
+Create a `.env` file inside `backend` using `.env.example`.
+
+Example configuration:
+
+```env
+MONGODB_URI=mongodb://localhost:27017/
+MONGODB_DB=shopmuse
+GROQ_API_KEY=your_groq_api_key
+```
+
+Use your MongoDB Atlas URI instead if you're using a cloud database.
+
+Never commit actual API keys, database passwords, or `.env` files.
+
+### 4. Initialize MongoDB and ChromaDB
+
+Make sure MongoDB is accessible, then run:
+
+```powershell
+python -m app.scripts.seed_catalog
+```
+
+This imports products into MongoDB and generates ChromaDB embeddings.
+
+The initial run may download an embedding model.
+
+### 5. Start FastAPI
+
+```powershell
 uvicorn app.main:app --reload
 ```
 
-The backend will run on:
+Backend:
 
-```text
-http://127.0.0.1:8000
-```
+`http://127.0.0.1:8000`
 
----
+API documentation:
 
-## 3. Frontend Setup
+`http://127.0.0.1:8000/docs`
 
-Open another terminal and navigate to:
+### 6. Start React Frontend
 
-```bash
+Open another terminal:
+
+```powershell
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-The frontend will be available at:
+Frontend:
 
-```text
-http://localhost:5173
+`http://localhost:5173`
+
+## 🧪 Example API Request
+
+**POST `/chat`**
+
+```json
+{
+  "session_id": "shopmuse-demo-01",
+  "message": "I need lightweight hiking equipment under $100 that is comfortable and suitable for someone with knee problems"
+}
 ```
 
----
+The API returns structured shopping results, including the interpreted intent, execution plan, Reviewer feedback, and recommended products with fit scores and explanations.
 
-# 🧪 Testing Scenarios
+## 🧪 Testing and Validation
 
-ShopMuse was tested against multiple conversational scenarios.
+The project includes foundational tests for guardrail behavior.
 
-| Scenario                | Expected Behavior          |
-| ----------------------- | -------------------------- |
-| Normal shopping query   | Relevant recommendations   |
-| Budget constraint       | Budget-aware ranking       |
-| Multiple preferences    | Multi-constraint retrieval |
-| Ambiguous query         | Clarification              |
-| Unsupported requirement | Reviewer identifies issue  |
-| Changed preference      | Planner replans            |
-| Impossible budget       | Fallback recommendations   |
-| "Why this?"             | Evidence-based explanation |
-| Follow-up query         | Session context maintained |
+Additional recommended integration tests include:
 
----
+- Semantic retrieval relevance
+- MongoDB–ChromaDB product consistency
+- Budget and category constraint enforcement
+- Session-memory refinement
+- Planner–Reviewer replanning
+- Unsupported product-claim prevention
+- Zero-result fallback
+- Database failure handling
+- Prompt-injection resistance
 
-# 🔍 Why ShopMuse is Agentic
+Database seeding has been verified with 114 MongoDB product records and 114 ChromaDB vectors. Complete end-to-end security and reliability testing remains necessary.
 
-Traditional recommendation systems often follow a fixed pipeline:
+## 🎯 Project Objective
 
-```text
-Query → Search → Results
-```
+To develop an intelligent, explainable, and context-aware conversational shopping assistant that combines autonomous agent coordination, semantic product discovery, structured catalog retrieval, and responsible recommendation generation.
 
-ShopMuse instead uses:
+## 🔮 Future Enhancements
 
-```text
-Query
-  ↓
-Planning
-  ↓
-Specialized Agents
-  ↓
-Retrieval
-  ↓
-Ranking
-  ↓
-Review
-  ↓
-Replanning if required
-  ↓
-Explanation
-  ↓
-Results
-```
-
-The system can therefore **reason about requirements, evaluate its own recommendation plan, and adapt the workflow when constraints cannot be satisfied**.
+- Real-time e-commerce marketplace integration
+- Personalized recommendations across sessions
+- Product images and shopping links
+- Natural-language product comparison
+- Advanced preference learning
+- Persistent conversational memory
+- Multilingual shopping assistance
+- Recommendation evaluation dashboard
+- Deployment and monitoring
 
 ---
 
-# 🎯 Project Objectives
+**ShopMuse AI — Shopping, but make it magical. ✨**
 
-The project demonstrates:
-
-* Agentic system design
-* Multi-agent coordination
-* Planning and task decomposition
-* Reviewer-based validation
-* Dynamic replanning
-* Conversational memory
-* Product retrieval and ranking
-* Explainable recommendations
-* Fallback strategies
-* Full-stack AI application development
-
----
-
-# 🔮 Future Scope
-
-Possible future improvements include:
-
-* Real-time e-commerce APIs
-* Larger product catalogs
-* Vector database integration
-* User accounts and persistent preferences
-* Price tracking
-* Product comparison
-* Shopping-cart integration
-* Personalized recommendation models
-* Advanced observability dashboards
-* Production deployment
-* Human-in-the-loop review
-
----
-
-# 👩‍💻 Author
-
-**Dimple Bhojwani**
-
-Computer Engineering
-VESIT
-
-### GitHub
-
-`https://github.com/Dimple2706/shopmuse-ai`
-
----
-
-## ⭐ Project Summary
-
-**ShopMuse AI is a conversational, multi-agent shopping assistant that combines planning, retrieval, ranking, explanation, memory, review, and dynamic replanning to provide adaptive product recommendations through a simple conversational interface.**
+Built as part of **PS-12: Conversational Shopping Assistant Agent**.
