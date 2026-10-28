@@ -40,7 +40,7 @@ Extract:
 Rules:
 
 1. category should be one of:
-   hiking, fitness, yoga, footwear, or null
+   hiking, fitness, yoga, footwear, beauty, electronics, bags, gifts, or null
 
 2. budget should be a number if the user gives a budget.
    Otherwise use null.

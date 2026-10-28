@@ -9,12 +9,15 @@ from app.agents.fallback_agent import FallbackAgent
 from app.agents.memory_agent import SessionMemoryAgent
 from app.agents.planner import Planner
 from app.agents.reviewer import Reviewer
+from app.security.guardrails import Guardrails
+from app.governance.audit import audit
 
 
 class Orchestrator:
 
     def __init__(self):
 
+        self.guardrails = Guardrails()
         self.ingestion = QueryIngestionAgent()
         self.intent = IntentExtractionAgent()
         self.clarification = ClarificationAgent()
@@ -24,7 +27,7 @@ class Orchestrator:
         self.explanation = ExplanationAgent()
 
         self.fallback = FallbackAgent(
-            self.retrieval.catalog
+            self.retrieval.tools
         )
 
         self.memory = SessionMemoryAgent()
@@ -37,9 +40,9 @@ class Orchestrator:
         # 1. INGESTION
         # --------------------------------
 
-        normalized = self.ingestion.run(
-            query
-        )
+        query = self.guardrails.validate_input(session_id, query)
+        audit("request", session_id, status="received")
+        normalized = self.ingestion.run(query)
 
         # --------------------------------
         # 2. INTENT EXTRACTION
@@ -53,6 +56,7 @@ class Orchestrator:
         # 3. SESSION MEMORY
         # --------------------------------
 
+        self.guardrails.validate_intent(new_intent)
         previous_intent = self.memory.get(
             session_id
         )
@@ -99,9 +103,7 @@ class Orchestrator:
             intent
         )
 
-        candidates = self.retrieval.run(
-            attributes
-        )
+        candidates = self.retrieval.run(attributes, normalized)
 
         # --------------------------------
         # 7. ZERO RESULT
@@ -123,7 +125,7 @@ class Orchestrator:
             intent
         )
 
-        ranked = ranked[:3]
+        ranked = self.guardrails.validate_products(ranked[:3], intent, self.retrieval.tools)
 
         # --------------------------------
         # 8. REVIEW
@@ -159,11 +161,7 @@ class Orchestrator:
                 )
             )
 
-            replan_candidates = (
-                self.retrieval.run(
-                    replan_attributes
-                )
-            )
+            replan_candidates = self.retrieval.run(replan_attributes, normalized)
 
             if replan_candidates:
 
@@ -205,10 +203,9 @@ class Orchestrator:
         # 10. EXPLANATION
         # --------------------------------
 
-        ranked = self.explanation.run(
-            ranked,
-            intent
-        )
+        ranked = self.guardrails.validate_products(ranked, intent, self.retrieval.tools)
+        ranked = self.explanation.run(ranked, intent, self.retrieval.last_context)
+        audit("recommendation", session_id, count=len(ranked), mode=self.retrieval.last_mode)
 
         # --------------------------------
         # 11. FINAL RESPONSE
@@ -219,5 +216,6 @@ class Orchestrator:
             "intent": intent,
             "plan": plan,
             "review": review,
-            "products": ranked
+            "products": ranked,
+            "retrieval_mode": self.retrieval.last_mode
         }

@@ -36,11 +36,14 @@ class SessionMemoryAgent:
 
         for preference in new_preferences:
 
-            if preference not in old_preferences:
+            if preference not in old_preferences and preference not in ["cheaper", "premium"]:
                 old_preferences.append(
                     preference
                 )
 
+        # An explicit change like "not waterproof" removes the old requirement.
+        for preference in new_intent.get("remove_preferences", []):
+            if preference in old_preferences: old_preferences.remove(preference)
         merged["preferences"] = old_preferences
 
         # -------------------------

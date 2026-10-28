@@ -21,3 +21,7 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+# Vector storage / secrets
+chroma_data/
+*.sqlite3
+.env.local

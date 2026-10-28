@@ -11,7 +11,7 @@ class FallbackAgent:
 
         products = [
             product
-            for product in self.catalog.products
+            for product in self.catalog.catalog_access()
             if product["stock"]
         ]
 
