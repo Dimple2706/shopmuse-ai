@@ -1,5 +1,17 @@
 # 🛍️ ShopMuse AI
 
+### 🛍️ ShopMuse AI — Multi-Agent Conversational Shopping Assistant
+
+An AI-powered conversational shopping assistant that provides personalized product recommendations using a multi-agent architecture.
+
+🌐 **Live Demo:** [Try ShopMuse AI](https://shopmuse-ai.vercel.app)
+
+💻 **GitHub Repository:** [View Source Code](https://github.com/Dimple2706/shopmuse-ai)
+
+**Tech Stack:** React, Vite, FastAPI, Python, MongoDB (optional), ChromaDB (local RAG), and Render/Vercel deployment.
+
+> **Deployment Note:** The hosted demo uses lightweight structured product retrieval. The full semantic-search/RAG implementation is available in the source code for local execution.
+
 ### Conversational Shopping Assistant using a Planner–Reviewer Multi-Agent Architecture
 
 ShopMuse AI is an **agentic conversational shopping assistant** that helps users discover relevant products through natural-language queries.
